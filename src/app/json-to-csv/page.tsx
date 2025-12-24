@@ -25,14 +25,14 @@ export default function JsonToCsv() {
 
         try {
             let jsonData = JSON.parse(jsonInput);
-            
+
             // If it's not an array, wrap it in an array
             if (!Array.isArray(jsonData)) {
                 jsonData = [jsonData];
             }
 
             if (jsonData.length === 0) {
-                 toast({
+                toast({
                     title: "Empty Array",
                     description: "JSON array is empty.",
                     variant: "destructive"
@@ -41,12 +41,12 @@ export default function JsonToCsv() {
             }
 
             // Get headers from all keys in all objects
-            const headers = Array.from(new Set(jsonData.flatMap((obj: any) => Object.keys(obj))));
-            
+            const headers: string[] = Array.from(new Set(jsonData.flatMap((obj: any) => Object.keys(obj))));
+
             const csvRows = [
                 headers.join(','), // Header row
-                ...jsonData.map((row: any) => 
-                    headers.map(fieldName => {
+                ...jsonData.map((row: any) =>
+                    headers.map((fieldName: string) => {
                         let value = row[fieldName] ?? '';
                         // Escape quotes and wrap in quotes if contains comma or newline
                         if (typeof value === 'string') {
