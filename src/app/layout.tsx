@@ -8,6 +8,7 @@ import { Footer } from '@/components/footer';
 import React, { Suspense, useEffect } from 'react';
 import { ClickTracker } from '@/components/click-tracker';
 import { Inter, Source_Code_Pro } from 'next/font/google';
+import type { Metadata } from 'next';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollToTop } from '@/components/ui/scroll-to-top';
 import dynamic from 'next/dynamic';
