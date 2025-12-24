@@ -30,7 +30,7 @@ export default function TextCaseToggler() {
                 return char.toUpperCase();
             }
         }).join('');
-        
+
         setOutputText(toggled);
         toast({
             title: "Toggled!",
@@ -55,7 +55,7 @@ export default function TextCaseToggler() {
                         Text Case Toggler
                     </h1>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Toggle uppercase and lowercase letters in your text easily (e.g. "Hello" -> "hELLO").
+                        Toggle uppercase and lowercase letters in your text easily (e.g. "Hello" -&gt; "hELLO").
                     </p>
                 </div>
 

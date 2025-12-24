@@ -25,7 +25,7 @@ export default function RemoveDiacritics() {
 
         // Normalize text to NFD form and remove diacritics
         const cleaned = inputText.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        
+
         setOutputText(cleaned);
         toast({
             title: "Diacritics Removed",
@@ -50,7 +50,7 @@ export default function RemoveDiacritics() {
                         Remove Diacritics
                     </h1>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Strip accents and special characters from your text easily (e.g., café -> cafe).
+                        Strip accents and special characters from your text easily (e.g., café -&gt; cafe).
                     </p>
                 </div>
 
