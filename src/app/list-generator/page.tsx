@@ -20,7 +20,7 @@ export default function ListGeneratorPage() {
 
     const handleGenerate = () => {
         if (step === 0) {
-             toast({
+            toast({
                 title: "Invalid Step",
                 description: "Step cannot be zero.",
                 variant: "destructive"
@@ -34,30 +34,30 @@ export default function ListGeneratorPage() {
                 list.push(`${prefix}${i}${suffix}`);
             }
         } else if (start >= end && step < 0) {
-             for (let i = start; i >= end; i += step) {
+            for (let i = start; i >= end; i += step) {
                 list.push(`${prefix}${i}${suffix}`);
             }
         } else {
-             // Try to handle implicit direction or show error
-             // If start < end but step is negative -> infinite or wrong
-             // If start > end but step is positive -> wrong
-             
-             // Auto-correct step sign if user didn't specify
-             let effectiveStep = step;
-             if (start < end && step < 0) effectiveStep = -step;
-             if (start > end && step > 0) effectiveStep = -step;
-             
-             for (let i = start; (effectiveStep > 0 ? i <= end : i >= end); i += effectiveStep) {
+            // Try to handle implicit direction or show error
+            // If start < end but step is negative -> infinite or wrong
+            // If start > end but step is positive -> wrong
+
+            // Auto-correct step sign if user didn't specify
+            let effectiveStep = step;
+            if (start < end && step < 0) effectiveStep = -step;
+            if (start > end && step > 0) effectiveStep = -step;
+
+            for (let i = start; (effectiveStep > 0 ? i <= end : i >= end); i += effectiveStep) {
                 list.push(`${prefix}${i}${suffix}`);
-                 if (list.length > 10000) break; // Safety break
-             }
+                if (list.length > 10000) break; // Safety break
+            }
         }
-        
+
         if (list.length > 10000) {
-             toast({
+            toast({
                 title: "List Truncated",
                 description: "Generated list truncated to 10,000 items for performance.",
-                variant: "warning"
+                variant: "destructive"
             });
         }
 
@@ -94,46 +94,46 @@ export default function ListGeneratorPage() {
                         <CardContent className="space-y-4">
                             <div className="space-y-2">
                                 <Label htmlFor="start">Start Number</Label>
-                                <Input 
-                                    id="start" 
-                                    type="number" 
-                                    value={start} 
-                                    onChange={(e) => setStart(Number(e.target.value))} 
+                                <Input
+                                    id="start"
+                                    type="number"
+                                    value={start}
+                                    onChange={(e) => setStart(Number(e.target.value))}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="end">End Number</Label>
-                                <Input 
-                                    id="end" 
-                                    type="number" 
-                                    value={end} 
-                                    onChange={(e) => setEnd(Number(e.target.value))} 
+                                <Input
+                                    id="end"
+                                    type="number"
+                                    value={end}
+                                    onChange={(e) => setEnd(Number(e.target.value))}
                                 />
                             </div>
                             <div className="space-y-2">
                                 <Label htmlFor="step">Step</Label>
-                                <Input 
-                                    id="step" 
-                                    type="number" 
-                                    value={step} 
-                                    onChange={(e) => setStep(Number(e.target.value))} 
+                                <Input
+                                    id="step"
+                                    type="number"
+                                    value={step}
+                                    onChange={(e) => setStep(Number(e.target.value))}
                                 />
                             </div>
-                             <div className="space-y-2">
+                            <div className="space-y-2">
                                 <Label htmlFor="prefix">Prefix (Optional)</Label>
-                                <Input 
-                                    id="prefix" 
-                                    value={prefix} 
-                                    onChange={(e) => setPrefix(e.target.value)} 
+                                <Input
+                                    id="prefix"
+                                    value={prefix}
+                                    onChange={(e) => setPrefix(e.target.value)}
                                     placeholder="e.g. Item "
                                 />
                             </div>
-                             <div className="space-y-2">
+                            <div className="space-y-2">
                                 <Label htmlFor="suffix">Suffix (Optional)</Label>
-                                <Input 
-                                    id="suffix" 
-                                    value={suffix} 
-                                    onChange={(e) => setSuffix(e.target.value)} 
+                                <Input
+                                    id="suffix"
+                                    value={suffix}
+                                    onChange={(e) => setSuffix(e.target.value)}
                                     placeholder="e.g. ."
                                 />
                             </div>
@@ -146,7 +146,7 @@ export default function ListGeneratorPage() {
                     <Card className="md:col-span-2 flex flex-col">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle>Generated List</CardTitle>
-                             <Button variant="ghost" size="sm" onClick={copyToClipboard} disabled={!generatedList}>
+                            <Button variant="ghost" size="sm" onClick={copyToClipboard} disabled={!generatedList}>
                                 <Copy className="h-4 w-4 mr-2" />
                                 Copy
                             </Button>
