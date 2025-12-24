@@ -13,7 +13,47 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { ScrollToTop } from '@/components/ui/scroll-to-top';
 import dynamic from 'next/dynamic';
 
+import ExternalPrefetch from "@/components/ExternalPrefetch";
+
 const ProductPopup = dynamic(() => import('@/components/product-popup').then(m => m.ProductPopup), { ssr: false });
+import { tools } from '@/lib/search-data';
+import { usePathname } from 'next/navigation';
+
+function MetaUpdater() {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const currentTool = tools.find(t => t.href === pathname);
+    if (currentTool) {
+      document.title = `${currentTool.title} – tool.huzi.pk`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', currentTool.description);
+      }
+
+      // Update OG/Twitter tags as well
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', `${currentTool.title} – tool.huzi.pk`);
+
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) ogDescription.setAttribute('content', currentTool.description);
+
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) twitterTitle.setAttribute('content', `${currentTool.title} – tool.huzi.pk`);
+
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDescription) twitterDescription.setAttribute('content', currentTool.description);
+    } else if (pathname === '/') {
+      document.title = 'tool.huzi.pk – Free Online Tools & Utilities for Everyday Tasks';
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', 'Discover free online tools at tool.huzi.pk – from text, image & code converters to generators, all in one place. Fast, secure & 100% client-side.');
+      }
+    }
+  }, [pathname]);
+
+  return null;
+}
 
 const inter = Inter({
   subsets: ['latin'],
@@ -81,14 +121,7 @@ function RootLayoutSkeleton() {
   );
 }
 
-function Prefetcher() {
-  useEffect(() => {
-    // This effect runs only once on the client, importing the prefetcher logic.
-    // @ts-ignore
-    import('@/lib/prefetch.js');
-  }, []);
-  return null;
-}
+
 
 export default function RootLayout({
   children,
@@ -166,8 +199,9 @@ export default function RootLayout({
           <Toaster />
           <ClickTracker />
           <ScrollToTop />
-          <Prefetcher />
+          <ExternalPrefetch />
           <ProductPopup />
+          <MetaUpdater />
         </ThemeProvider>
       </body>
     </html>

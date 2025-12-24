@@ -1,6 +1,14 @@
 import { Bot, FileCode, Clock, Link as LinkIcon, ListOrdered, HardDrive, CreditCard, ArrowDownAZ, ArrowLeftRight, Calculator, CaseSensitive, Ruler, QrCode, KeyRound, HeartPulse, Cake, Image, FileText, Info, MessageSquare, Pencil, Pilcrow, Type, Banknote, Globe, FileImage, Palette, Youtube, ShieldCheck, Tags, TerminalSquare, Layers, Video, Pipette, Sheet, Table, Timer, Lock, Database, Binary, Code, Share2, Ratio, Scaling, CodeXml, Keyboard, Calendar, Smile, Search, GitCompareArrows, Users, Languages, Shuffle, Scroll, Braces, Voicemail, Eraser, ArrowDownUp, BarChart, Gift, FileSearch, Combine, Minimize, Merge, Split, ListChecks, BookOpen, BarChart2, FileCog, Wand2, RefreshCw, Hash, Dna, ScanSearch, Sparkles, Trash2, FlipHorizontal, Ghost, Repeat, Mail, Ban, Phone, TrendingUp, TrendingDown, ListX, XCircle, PenTool } from "lucide-react";
 
-export const tools = [
+export interface Tool {
+  icon: React.ReactNode;
+  href: string;
+  title: string;
+  description: string;
+  guide?: string[];
+}
+
+export const tools: Tool[] = [
   {
     icon: <Code className="h-8 w-8" />,
     href: "/regex-tester",
@@ -68,10 +76,10 @@ export const tools = [
     description: "See which words are repeated the most in your text.",
   },
   {
-    icon: <QrCode className="h-8 w-8" />,
-    href: "/qr-generator-scanner",
-    title: "QR Generator & Scanner",
-    description: "Create & scan QR codes in seconds.",
+    icon: <Database className="h-8 w-8" />,
+    href: "/local-storage-editor",
+    title: "Local Storage Editor",
+    description: "View, edit, and manage your browser's local storage data easily.",
   },
   {
     icon: <Palette className="h-8 w-8" />,
@@ -288,12 +296,26 @@ export const tools = [
     href: "/text-summarizer",
     title: "AI Text Summarizer",
     description: "Summarize any paragraph or article to just a few key sentences.",
+    guide: [
+      "Go to the Text Summarizer tool.",
+      "Paste your long text, article, or document into the text area.",
+      "Click 'Summarize' to let the AI process the content.",
+      "Review the generated summary which captures the key points.",
+      "Copy the summary for your use."
+    ]
   },
   {
     icon: <Braces className="h-8 w-8" />,
     href: "/json-formatter",
     title: "JSON Formatter",
     description: "Format, validate, and beautify your JSON data instantly.",
+    guide: [
+      "Navigate to the JSON Formatter page.",
+      "Paste your raw JSON into the 'Input JSON' text area.",
+      "Click the 'Prettify' button to format the JSON with proper indentation.",
+      "Click the 'Minify' button to remove all whitespace and compress the JSON.",
+      "The result will appear in the 'Formatted JSON' area, ready to be copied."
+    ]
   },
   {
     icon: <Palette className="h-8 w-8" />,
@@ -355,12 +377,7 @@ export const tools = [
     title: "Paragraph Merger",
     description: "Merge multiple paragraphs into a single block of text.",
   },
-  {
-    icon: <CodeXml className="h-8 w-8" />,
-    href: "/html-entity-decoder",
-    title: "HTML Entity Decoder",
-    description: "Encode and decode special HTML characters for safe web display.",
-  },
+
   {
     icon: <FileSearch className="h-8 w-8" />,
     href: "/text-pattern-finder",
@@ -582,6 +599,13 @@ export const tools = [
     href: "/image-to-pdf-converter",
     title: "Image to PDF Converter",
     description: "Convert multiple images (JPG, PNG, WebP) into a single PDF file.",
+    guide: [
+      "Select the Image to PDF Converter tool.",
+      "Upload one or more images (JPG, PNG, WebP).",
+      "Arrange the images in the desired order if needed.",
+      "Click 'Convert to PDF' to generate the document.",
+      "Download the resulting PDF file."
+    ]
   },
   {
     icon: <Pencil className="h-8 w-8" />,
@@ -675,44 +699,12 @@ export const tools = [
   },
 ];
 
-export const guides = [
-  {
-    icon: <Braces className="h-8 w-8 text-primary" />,
-    href: "/guide#json-formatter",
-    title: "JSON Formatter Guide",
-    description: "How to use the JSON Formatter tool.",
-    steps: [
-      "Navigate to the JSON Formatter page.",
-      "Paste your raw JSON into the 'Input JSON' text area.",
-      "Click the 'Prettify' button to format the JSON with proper indentation.",
-      "Click the 'Minify' button to remove all whitespace and compress the JSON.",
-      "The result will appear in the 'Formatted JSON' area, ready to be copied."
-    ]
-  },
-  {
-    icon: <Wand2 className="h-8 w-8 text-primary" />,
-    href: "/guide#text-summarizer",
-    title: "Text Summarizer Guide",
-    description: "How to use the AI Text Summarizer.",
-    steps: [
-      "Go to the Text Summarizer tool.",
-      "Paste your long text, article, or document into the text area.",
-      "Click 'Summarize' to let the AI process the content.",
-      "Review the generated summary which captures the key points.",
-      "Copy the summary for your use."
-    ]
-  },
-  {
-    icon: <FileImage className="h-8 w-8 text-primary" />,
-    href: "/guide#image-to-pdf",
-    title: "Image to PDF Guide",
-    description: "Convert images to PDF documents.",
-    steps: [
-      "Select the Image to PDF Converter tool.",
-      "Upload one or more images (JPG, PNG, WebP).",
-      "Arrange the images in the desired order if needed.",
-      "Click 'Convert to PDF' to generate the document.",
-      "Download the resulting PDF file."
-    ]
-  }
-];
+export const guides = tools
+  .filter((tool) => tool.guide && tool.guide.length > 0)
+  .map((tool) => ({
+    icon: tool.icon,
+    href: `/guide#${tool.href.replace('/', '')}`,
+    title: `${tool.title} Guide`,
+    description: `How to use the ${tool.title}.`,
+    steps: tool.guide || []
+  }));

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
-const navLinks = [
+const navLinks: { href: string; label: string; external?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/search", label: "All Tools" },
 ];
@@ -46,7 +46,7 @@ export function Header() {
         </div>
 
         <nav className="hidden items-center justify-center space-x-6 text-sm font-medium md:flex">
-          {navLinks.map((link) => 
+          {navLinks.map((link) =>
             link.external ? (
               <a
                 key={link.href}
@@ -58,7 +58,7 @@ export function Header() {
                 {link.label}
               </a>
             ) : (
-             <Link
+              <Link
                 key={link.href}
                 href={link.href}
                 className="transition-colors hover:text-foreground/80 text-foreground/60"
@@ -70,18 +70,18 @@ export function Header() {
         </nav>
 
         <div className="flex items-center justify-end space-x-2">
-           <form onSubmit={handleSearch} className="hidden sm:flex relative w-full max-w-sm items-center space-x-2">
+          <form onSubmit={handleSearch} className="hidden sm:flex relative w-full max-w-sm items-center space-x-2">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input 
-              type="search" 
-              placeholder="Search tools..." 
-              className="pl-8 h-9 w-[200px] lg:w-[300px]" 
+            <Input
+              type="search"
+              placeholder="Search tools..."
+              className="pl-8 h-9 w-[200px] lg:w-[300px]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </form>
           <ThemeSwitcher />
-          
+
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button
@@ -95,35 +95,35 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="pr-0">
               <Link href="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
-                  <img src="/tool.huzi.pk.png" alt="tool.huzi.pk logo" className="h-8 w-8 rounded-sm" />
-                  <span className="font-bold">tool.huzi.pk</span>
+                <img src="/tool.huzi.pk.png" alt="tool.huzi.pk logo" className="h-8 w-8 rounded-sm" />
+                <span className="font-bold">tool.huzi.pk</span>
               </Link>
               <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-                  <div className="flex flex-col space-y-3">
-                      {navLinks.map(link => 
-                        link.external ? (
-                          <a
-                            key={link.href}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-foreground"
-                            onClick={handleLinkClick}
-                          >
-                            {link.label}
-                          </a>
-                        ) : (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            className="text-foreground"
-                            onClick={handleLinkClick}
-                          >
-                            {link.label}
-                          </Link>
-                        )
-                      )}
-                  </div>
+                <div className="flex flex-col space-y-3">
+                  {navLinks.map(link =>
+                    link.external ? (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-foreground"
+                        onClick={handleLinkClick}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="text-foreground"
+                        onClick={handleLinkClick}
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  )}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
