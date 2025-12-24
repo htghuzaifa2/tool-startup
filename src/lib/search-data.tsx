@@ -433,7 +433,7 @@ export const tools = [
     title: "Unit Converter",
     description: "Convert between various units for length, mass, and temperature.",
   },
-   {
+  {
     icon: <Banknote className="h-8 w-8" />,
     href: "/currency-converter",
     title: "Currency Converter",
@@ -469,7 +469,7 @@ export const tools = [
     title: "Password Strength Checker",
     description: "Test the strength of your password and get suggestions to make it more secure.",
   },
-   {
+  {
     icon: <Users className="h-8 w-8" />,
     href: "/random-username-generator",
     title: "Random Username Generator",
@@ -499,7 +499,7 @@ export const tools = [
     title: "HTML Table Generator",
     description: "Create clean HTML table code from row and column inputs.",
   },
-   {
+  {
     icon: <Code className="h-8 w-8" />,
     href: "/html-minifier",
     title: "HTML Minifier",
@@ -547,7 +547,7 @@ export const tools = [
     title: "Date Difference Calculator",
     description: "Calculate the number of days, weeks, or months between two dates.",
   },
-   {
+  {
     icon: <Ratio className="h-8 w-8" />,
     href: "/aspect-ratio-calculator",
     title: "Aspect Ratio Calculator",
@@ -583,7 +583,7 @@ export const tools = [
     title: "Image to PDF Converter",
     description: "Convert multiple images (JPG, PNG, WebP) into a single PDF file.",
   },
-   {
+  {
     icon: <Pencil className="h-8 w-8" />,
     href: "/notepad",
     title: "Notepad",
@@ -595,7 +595,7 @@ export const tools = [
     title: "Rich Text Editor",
     description: "An advanced editor for formatted text with headings, lists, and more.",
   },
-   {
+  {
     icon: <TerminalSquare className="h-8 w-8" />,
     href: "/markdown-editor",
     title: "Markdown Editor",
@@ -638,10 +638,28 @@ export const tools = [
     description: "Pick a color and get its HEX, RGB, and HSL codes for your projects.",
   },
   {
-    icon: <Database className="h-8 w-8" />,
-    href: "/local-storage-editor",
-    title: "Local Storage Editor",
-    description: "View, edit, and delete data stored in your browser's local storage.",
+    icon: <Youtube className="h-8 w-8" />,
+    href: "/youtube-thumbnail-downloader",
+    title: "YouTube Thumbnail Downloader",
+    description: "Download high-quality thumbnails from any YouTube video instantly.",
+  },
+  {
+    icon: <Video className="h-8 w-8" />,
+    href: "/vimeo-thumbnail-downloader",
+    title: "Vimeo Thumbnail Downloader",
+    description: "Download the thumbnail from any public Vimeo video.",
+  },
+  {
+    icon: <Video className="h-8 w-8" />,
+    href: "/dailymotion-thumbnail-downloader",
+    title: "Dailymotion Thumbnail Downloader",
+    description: "Download the thumbnail from any Dailymotion video.",
+  },
+  {
+    icon: <CodeXml className="h-8 w-8" />,
+    href: "/html-escaper-unescaper",
+    title: "HTML Escaper / Unescaper",
+    description: "Encode special characters to HTML entities and decode them back.",
   },
   {
     icon: <Info className="h-8 w-8" />,
@@ -664,11 +682,11 @@ export const guides = [
     title: "JSON Formatter Guide",
     description: "How to use the JSON Formatter tool.",
     steps: [
-        "Navigate to the JSON Formatter page.",
-        "Paste your raw JSON into the 'Input JSON' text area.",
-        "Click the 'Prettify' button to format the JSON with proper indentation.",
-        "Click the 'Minify' button to remove all whitespace and compress the JSON.",
-        "The result will appear in the 'Formatted JSON' area, ready to be copied."
+      "Navigate to the JSON Formatter page.",
+      "Paste your raw JSON into the 'Input JSON' text area.",
+      "Click the 'Prettify' button to format the JSON with proper indentation.",
+      "Click the 'Minify' button to remove all whitespace and compress the JSON.",
+      "The result will appear in the 'Formatted JSON' area, ready to be copied."
     ]
   },
   {
@@ -677,11 +695,11 @@ export const guides = [
     title: "Text Summarizer Guide",
     description: "How to use the AI Text Summarizer.",
     steps: [
-        "Go to the Text Summarizer tool.",
-        "Paste your long text, article, or document into the text area.",
-        "Click 'Summarize' to let the AI process the content.",
-        "Review the generated summary which captures the key points.",
-        "Copy the summary for your use."
+      "Go to the Text Summarizer tool.",
+      "Paste your long text, article, or document into the text area.",
+      "Click 'Summarize' to let the AI process the content.",
+      "Review the generated summary which captures the key points.",
+      "Copy the summary for your use."
     ]
   },
   {
@@ -690,11 +708,11 @@ export const guides = [
     title: "Image to PDF Guide",
     description: "Convert images to PDF documents.",
     steps: [
-        "Select the Image to PDF Converter tool.",
-        "Upload one or more images (JPG, PNG, WebP).",
-        "Arrange the images in the desired order if needed.",
-        "Click 'Convert to PDF' to generate the document.",
-        "Download the resulting PDF file."
+      "Select the Image to PDF Converter tool.",
+      "Upload one or more images (JPG, PNG, WebP).",
+      "Arrange the images in the desired order if needed.",
+      "Click 'Convert to PDF' to generate the document.",
+      "Download the resulting PDF file."
     ]
   }
 ];
